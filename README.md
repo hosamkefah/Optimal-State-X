@@ -70,10 +70,10 @@ The Optimal State Application is designed to help users monitor and improve thei
 
 ## **Contributors**  
 - **Team Members:** 
-	- Rashed shboul
-	- Husam kefah 
-	- Ahmad kosheh 
+	- Hosam kefah
+	- Rashed shboul 
 	- Mohammad nawasrah
+	- Ahmad kosheh 
 - **Clients:** Course students 
 
 ---
