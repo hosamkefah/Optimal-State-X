@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984421373886",
+    "project_id": "optimal-state-x-8b723",
+    "storage_bucket": "optimal-state-x-8b723.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984421373886:android:b2e783e2f311696abccbef",
+        "android_client_info": {
+          "package_name": "com.example.Optimal_State_X"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYtHcLqTiz-ijsSpKQYn9hKX-92rSOm14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
