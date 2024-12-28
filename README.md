@@ -1,8 +1,8 @@
-# Optimal State Application  
+# Optimal State X Application  
 
 **Version:** 1.0  
 **Date:** Dec 2024  
-**Course:** CPE579-SOFTWARE DESIGN AND DEVELOPMENT PROJECT 
+**Course:** CPE579-SOFTWARE DESIGN AND DEVELOPMENT PROJECT
 
 ---
 
@@ -70,10 +70,10 @@ The Optimal State Application is designed to help users monitor and improve thei
 
 ## **Contributors**  
 - **Team Members:** 
-	- Rashed shboul
-	- Husam kefah 
-	- Ahmad kosheh 
+	- Hosam kefah
+	- Rashed shboul 
 	- Mohammad nawasrah
+	- Ahmad kosheh 
 - **Clients:** Course students 
 
 ---
@@ -81,12 +81,13 @@ The Optimal State Application is designed to help users monitor and improve thei
 ## **Contact Information**  
 For any issues, questions, or feedback, please contact:  
 - **Instructor:** [tawalbeh@just.edu.jo]
-- **Team Lead:** [hosam.sayaheen14@gmail.com]
+- **Project Manager:** [mmnawasreh19@cit.just.edu.jo]
+- **Technical Lead:** [hosam.sayaheen14@gmail.com]  
 
 ---
 
 ## **License**  
-This project was developed as part of the CSE-455 Software Engineering course and is intended for academic use only.  
+This project was developed as part of the CPE579-SOFTWARE DESIGN AND DEVELOPMENT PROJECT course and is intended for academic use only.  
 
 ---
 
