@@ -104,7 +104,7 @@ class MainActivityProvider : AppCompatActivity() {
     }
 
     private fun displayProviderData(provider: Provider) {
-        binding.welcomeText1.text = "Welcome Provider, ${provider.firstname} ${provider.lastname}!"
+        binding.welcomeText1.text = "Welcome, ${provider.firstname} ${provider.lastname}!"
     }
 
     private fun displayPatientData(patient: Patient) {
