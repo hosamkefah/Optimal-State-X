@@ -87,7 +87,7 @@ For any issues, questions, or feedback, please contact:
 ---
 
 ## **License**  
-This project was developed as part of the CSE-455 Software Engineering course and is intended for academic use only.  
+This project was developed as part of the CPE579-SOFTWARE DESIGN AND DEVELOPMENT PROJECT course and is intended for academic use only.  
 
 ---
 
