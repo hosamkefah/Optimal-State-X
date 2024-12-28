@@ -81,7 +81,8 @@ The Optimal State Application is designed to help users monitor and improve thei
 ## **Contact Information**  
 For any issues, questions, or feedback, please contact:  
 - **Instructor:** [tawalbeh@just.edu.jo]
-- **Team Lead:** [hosam.sayaheen14@gmail.com]
+- **Project Manager:** [mmnawasreh19@cit.just.edu.jo]
+- **Technical Lead:** [hosam.sayaheen14@gmail.com]  
 
 ---
 
