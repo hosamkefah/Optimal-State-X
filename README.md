@@ -1,4 +1,4 @@
-# Optimal State Application  
+# Optimal State X Application  
 
 **Version:** 1.0  
 **Date:** Dec 2024  
