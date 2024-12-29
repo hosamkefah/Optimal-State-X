@@ -9,13 +9,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="360dp"
+        android:layout_height="166dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="60dp"
+        android:contentDescription="Profile Image"
+        android:src="@drawable/hosam" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log in"
         android:textSize="40sp"
         android:textColor="@color/black"
-        android:layout_margin="20dp" />
+        android:layout_margin="2dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="350dp"
