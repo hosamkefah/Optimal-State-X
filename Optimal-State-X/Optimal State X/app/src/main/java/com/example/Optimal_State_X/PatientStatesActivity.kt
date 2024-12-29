@@ -48,7 +48,9 @@ class PatientStatesActivity : AppCompatActivity() {
 
             // Initialize RecyclerView
             binding.patientsRecyclerView.layoutManager = LinearLayoutManager(this)
-            patientsAdapter = PatientStatesAdapter(mutableListOf())
+            patientsAdapter = PatientStatesAdapter(mutableListOf()) { patient ->
+                openPatientStatistics(patient)
+            }
             binding.patientsRecyclerView.adapter = patientsAdapter
             Log.d(TAG, "RecyclerView setup complete")
 
@@ -63,6 +65,17 @@ class PatientStatesActivity : AppCompatActivity() {
             Toast.makeText(this, "Error initializing activity", Toast.LENGTH_LONG).show()
             finish()
         }
+
+
+    }
+    private fun openPatientStatistics(patient: PatientStateData) {
+        Log.d(TAG, "Opening statistics for patient ID: ${patient.id}")
+        val intent = Intent(this, ColorStatisticsActivity::class.java).apply {
+            putExtra("PATIENT_ID", patient.id)
+            putExtra("PATIENT_NAME", patient.name)
+            putExtra("IS_PROVIDER", true)
+        }
+        startActivity(intent)
     }
 
     private fun loadPatientsWithStates() {
@@ -175,13 +188,17 @@ data class PatientStateData(
 )
 
 class PatientStatesAdapter(
-    private var patients: MutableList<PatientStateData>
+    private var patients: MutableList<PatientStateData>,
+    private val onPatientClick: (PatientStateData) -> Unit
 ) : RecyclerView.Adapter<PatientStatesAdapter.PatientViewHolder>() {
 
-    class PatientViewHolder(private val binding: ItemPatientStateBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class PatientViewHolder(
+        private val binding: ItemPatientStateBinding,
+        private val onPatientClick: (PatientStateData) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("NewApi")
         fun bind(patient: PatientStateData) {
+            binding.root.setOnClickListener { onPatientClick(patient) }
             binding.patientNameText.text = patient.name
             binding.patientEmailText.text = patient.email
             binding.currentStateText.text = patient.currentState
@@ -217,7 +234,7 @@ class PatientStatesAdapter(
             parent,
             false
         )
-        return PatientViewHolder(binding)
+        return PatientViewHolder(binding, onPatientClick)
     }
 
     override fun onBindViewHolder(holder: PatientViewHolder, position: Int) {

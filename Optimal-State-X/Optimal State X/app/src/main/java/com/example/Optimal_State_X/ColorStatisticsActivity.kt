@@ -31,16 +31,33 @@ import java.time.format.DateTimeFormatter
 class ColorStatisticsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityColorStatisticsBinding
     private lateinit var pieChart: PieChart
+    private var isProvider: Boolean = false
+    private var patientId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityColorStatisticsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Get the patient ID either from intent (if provider) or from current user (if patient)
+        isProvider = intent.getBooleanExtra("IS_PROVIDER", false)
+        patientId = if (isProvider) {
+            // Get the patient ID that was passed from PatientStatesActivity
+            intent.getStringExtra("PATIENT_ID")
+        } else {
+            // If it's the patient themselves, use their own ID
+            FirebaseAuth.getInstance().currentUser?.uid
+        }
+
         // Set up toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        if (isProvider) {
+            val patientName = intent.getStringExtra("PATIENT_NAME")
+            supportActionBar?.title = "$patientName's Statistics"
+        }
 
         pieChart = binding.pieChart
         setupPieChart()
@@ -50,21 +67,20 @@ class ColorStatisticsActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        val auth = FirebaseAuth.getInstance()
-        val userId = auth.currentUser?.uid
-
-        if (userId.isNullOrEmpty()) {
-            Toast.makeText(this, "User not authenticated!", Toast.LENGTH_SHORT).show()
+        if (patientId.isNullOrEmpty()) {
+            Toast.makeText(this, "Patient ID not found!", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
+        Log.d("ColorStatisticsActivity", "Fetching data for patient ID: $patientId")
+
         // Initialize RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Fetch data from Firestore
+        // Fetch data from Firestore using the patient ID
         val db = Firebase.firestore
-        db.collection("state").document(userId).get()
+        db.collection("state").document(patientId!!).get()
             .addOnSuccessListener { document ->
                 if (document != null && document.exists()) {
                     Log.d("FirestoreDebug", "Document successfully retrieved: $document")
@@ -108,8 +124,8 @@ class ColorStatisticsActivity : AppCompatActivity() {
                         Toast.makeText(this, "Failed to load timestamps", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Log.e("FirestoreDebug", "Document does not exist")
-                    Toast.makeText(this, "No data found for user", Toast.LENGTH_SHORT).show()
+                    Log.e("FirestoreDebug", "Document does not exist for patient ID: $patientId")
+                    Toast.makeText(this, "No data found for this patient", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { exception ->
@@ -216,8 +232,12 @@ class ColorStatisticsActivity : AppCompatActivity() {
 
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        if (isProvider) {
+            finish() // This will return to PatientStatesActivity
+        } else {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
