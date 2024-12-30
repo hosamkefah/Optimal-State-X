@@ -88,7 +88,4 @@ For any issues, questions, or feedback, please contact:
 ## **License**  
 This project was developed as part of the CPE579-SOFTWARE DESIGN AND DEVELOPMENT PROJECT course and is intended for academic use only.  
 
----
 
-## **Acknowledgements**  
-Special thanks to our instructor, Lo'ai Tawalbeh, for their invaluable guidance, support, and feedback throughout the development process. Their expertise and encouragement were instrumental in the successful completion of this project.  
